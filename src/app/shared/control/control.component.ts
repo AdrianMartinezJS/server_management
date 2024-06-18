@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -13,4 +13,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ControlComponent {
   @Input({ required: true }) label!: string;
+
+  constructor(protected elementRef: ElementRef) {
+    // console.log(elementRef); Programatic access to the Host element
+  }
 }
