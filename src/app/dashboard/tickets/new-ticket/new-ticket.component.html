@@ -1,6 +1,8 @@
-<form>
+<form (ngSubmit)="onSubmit()" #form>
   <app-control label="Title">
-    <input type="text" name="title" id="title" />
+    <!-- <input type="text" name="title" id="title" #titleInput /> To get the value from the variable -->
+    <!-- For this we need just titleInput.value -->
+    <input type="text" name="title" id="title" #titleInput />
   </app-control>
   <app-control label="Request">
     <textarea name="request" id="request" rows="3"></textarea>
