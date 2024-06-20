@@ -1,4 +1,11 @@
-import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ElementRef,
+  Input,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -9,6 +16,7 @@ import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'control',
+    '(click)': 'onClick()',
   },
 })
 export class ControlComponent {
@@ -16,5 +24,15 @@ export class ControlComponent {
 
   constructor(protected elementRef: ElementRef) {
     // console.log(elementRef); Programatic access to the Host element
+  }
+
+  private el = inject(ElementRef);
+  @ContentChild('input') private control?: ElementRef<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
+
+  onClick() {
+    console.log('clicked', this.el);
+    console.log('clicked', this.control);
   }
 }
