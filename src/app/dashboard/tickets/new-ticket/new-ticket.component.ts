@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  output,
+} from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
@@ -22,9 +28,10 @@ export class NewTicketComponent {
   @ViewChild('form') form?: ElementRef<HTMLFormElement>; // help find childElements im Template
   // @ViewChildren(ButtonComponent) buttonComponent?: ElementRef<ButtonComponent>; // give an arary of ButtonComponents found in the template
 
+  add = output<{ title: string; text: string }>();
+
   onSubmit(title: string, ticketText: string) {
-    console.log(title);
-    console.log(ticketText);
+    this.add.emit({ title: title, text: ticketText });
     this.form?.nativeElement.reset();
   }
 }
