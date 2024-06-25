@@ -28,10 +28,15 @@ export class NewTicketComponent {
   @ViewChild('form') form?: ElementRef<HTMLFormElement>; // help find childElements im Template
   // @ViewChildren(ButtonComponent) buttonComponent?: ElementRef<ButtonComponent>; // give an arary of ButtonComponents found in the template
 
+  enteredTitle: string = '';
+  enteredText: string = '';
+
   add = output<{ title: string; text: string }>();
 
-  onSubmit(title: string, ticketText: string) {
-    this.add.emit({ title: title, text: ticketText });
-    this.form?.nativeElement.reset();
+  onSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
+    // this.form?.nativeElement.reset();
+    this.enteredText = '';
+    this.enteredTitle = '';
   }
 }

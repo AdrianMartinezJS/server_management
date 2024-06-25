@@ -12,10 +12,10 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
   private interval?: ReturnType<typeof setInterval>;
 
   constructor() {
-    effect(() => {
-      // Set a subscription
-      console.log('server status', this.currentStatus());
-    });
+    // effect(() => {
+    // Set a subscription
+    //   console.log('server status', this.currentStatus());
+    // });
   }
 
   ngOnInit() {
